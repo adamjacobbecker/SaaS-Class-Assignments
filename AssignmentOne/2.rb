@@ -1,6 +1,54 @@
-def count_words(string)
-  word_count = Hash.new(0)
-  input_words = string.downcase.scan(/\w+/)
-  input_words.each {|x| word_count[x] += 1 }
-  return word_count
+class WrongNumberOfPlayersError < StandardError ; end
+class NoSuchStrategyError < StandardError ; end
+
+def rps_game_winner(game)
+  
+  raise WrongNumberOfPlayersError unless game.length == 2
+  
+  game.each do |key, value| 
+    raise NoSuchStrategyError if !['R','P','S'].include? value.upcase
+  end
+  
+  case game[0][1]
+    when "R"
+      winner_index = 1 if game[1][1] == "P"
+      winner_index = 0 if game[1][1] == "S"
+      winner_index = 0 if game[1][1] == "R"
+    when "P"
+      winner_index = 1 if game[1][1] == "S"
+      winner_index = 0 if game[1][1] == "R"
+      winner_index = 0 if game[1][1] == "P"
+    when "S"
+      winner_index = 1 if game[1][1] == "R"
+      winner_index = 0 if game[1][1] == "P"
+      winner_index = 0 if game[1][1] == "S"
+  end
+  
+  return game[winner_index]
+  
 end
+
+p rps_game_winner([ ["Armando", "R"], ["Dave", "R"] ])
+
+
+
+def rps_tournament_winner(bracket)
+  
+  def rps_tournament_game_winner(bracket)
+    if bracket[0][0].class == String
+      return rps_game_winner(bracket)
+    else
+      rps_tournament_game_winner([bracket[0], bracket[1]])
+    end
+  end
+  
+  return rps_tournament_game_winner(bracket)
+  
+end
+
+p rps_tournament_winner(
+[
+[ ["Armando", "P"], ["Dave", "S"] ],
+[ ["Richard", "R"],  ["Michael", "S"] ],
+]
+)
