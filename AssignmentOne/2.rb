@@ -28,27 +28,29 @@ def rps_game_winner(game)
   
 end
 
-p rps_game_winner([ ["Armando", "R"], ["Dave", "R"] ])
-
-
+# p rps_game_winner([ ["Armando", "R"], ["Dave", "R"] ])
 
 def rps_tournament_winner(bracket)
   
-  def rps_tournament_game_winner(bracket)
-    if bracket[0][0].class == String
-      return rps_game_winner(bracket)
-    else
-      rps_tournament_game_winner([bracket[0], bracket[1]])
-    end
+  if bracket[0][0].class == String
+    return rps_game_winner(bracket)
+  else
+    return rps_tournament_winner([rps_tournament_winner(bracket[0]), rps_tournament_winner(bracket[1])])
   end
-  
-  return rps_tournament_game_winner(bracket)
   
 end
 
+=begin
 p rps_tournament_winner(
+[
 [
 [ ["Armando", "P"], ["Dave", "S"] ],
 [ ["Richard", "R"],  ["Michael", "S"] ],
+],
+[ 
+[ ["Allen", "S"], ["Omer", "P"] ],
+[ ["David E.", "R"], ["Richard X.", "P"] ]
+]
 ]
 )
+=end
