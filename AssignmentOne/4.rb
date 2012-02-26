@@ -18,6 +18,7 @@ class Dessert
   
 end
 
+
 class JellyBean < Dessert
   
   attr :flavor, true
