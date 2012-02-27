@@ -24,7 +24,7 @@ def rps_game_winner(game)
       winner_index = 0 if game[1][1] == "S"
   end
   
-  return game[winner_index]
+  return game[winner_index.to_i]
   
 end
 
