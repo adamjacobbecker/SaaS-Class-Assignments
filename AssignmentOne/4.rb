@@ -29,7 +29,7 @@ class JellyBean < Dessert
   end
   
   def delicious?
-    return true unless flavor == "black licorice"
+    return true unless flavor.downcase == "black licorice"
   end
   
 end
