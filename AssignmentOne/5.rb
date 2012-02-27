@@ -35,6 +35,6 @@ f = Foo.new
 f.bar = 1
 f.bar = 2
 f = Foo.new
-f. bar = 4
+f.bar = 4
 p f.bar_history
 =end
