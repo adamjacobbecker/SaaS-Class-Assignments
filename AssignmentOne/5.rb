@@ -9,7 +9,7 @@ class Class
     class_eval do
             
       define_method(attr_name + "=" ) do |x|
-        @history = Array.new().push(nil) if !@history
+        @history = Array.new().push(nil) if !defined? @history
         @history.push(x)
       end
       
