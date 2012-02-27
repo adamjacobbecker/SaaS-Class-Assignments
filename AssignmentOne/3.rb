@@ -9,7 +9,7 @@ def combine_anagrams(words)
   
   words.each do |x|
     
-    sorted = x.split(//).sort.to_s
+    sorted = x.downcase.split(//).sort.to_s
     
     if anagram_hash.has_key?(sorted)
       anagram_hash[sorted].push(x)
@@ -27,4 +27,4 @@ def combine_anagrams(words)
   
 end
 
-# p combine_anagrams(['cars', 'for', 'potatoes', 'racs', 'four','scar', 'creams', 'scream'])
+# p combine_anagrams(['CARS', 'for', 'potatoes', 'racs', 'four','scar', 'creams', 'scream'])
