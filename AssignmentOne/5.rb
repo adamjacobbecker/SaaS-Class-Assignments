@@ -7,12 +7,9 @@ class Class
 
     #class_eval "your code here, use %Q for multiline strings"
     class_eval do
-      
-      def initialize
-         @history = Array.new().push(nil)
-      end
             
       define_method(attr_name + "=" ) do |x|
+        @history = Array.new().push(nil) if !@history
         @history.push(x)
       end
       
