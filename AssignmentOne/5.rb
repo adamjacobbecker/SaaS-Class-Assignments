@@ -6,18 +6,18 @@ class Class
     attr_reader attr_name+"_history" # create bar_history getter
 
     #class_eval "your code here, use %Q for multiline strings"
-    class_eval do
+    class_eval %Q{
             
-      define_method(attr_name + "=" ) do |x|
-        @history = Array.new().push(nil) if !defined? @history
-        @history.push(x)
+      def #{attr_name}=(x)
+        @#{attr_name}_history = Array.new().push(nil) if !defined? @#{attr_name}_history
+        @#{attr_name}_history.push(x)
       end
       
       define_method(attr_name + "_history") do
-        return @history
+        return @#{attr_name}_history
       end
       
-    end
+    }
     
   end
   
@@ -25,6 +25,7 @@ end
 
 class Foo
   attr_accessor_with_history :bar
+  attr_accessor_with_history :foobar
 end
 
 =begin
@@ -34,4 +35,6 @@ f.bar = 2
 f = Foo.new
 f.bar = 4
 p f.bar_history
+f.foobar = 9
+p f.foobar_history
 =end
