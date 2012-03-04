@@ -9,7 +9,11 @@ class Dessert
   end
   
   def healthy?
-    return true if self.calories < 200
+    if self.calories < 200
+      true
+    else
+      false
+    end
   end
   
   def delicious?
@@ -29,7 +33,11 @@ class JellyBean < Dessert
   end
   
   def delicious?
-    return true unless flavor.downcase == "black licorice"
+    if flavor.downcase == "black licorice"
+      false
+    else
+      true
+    end
   end
   
 end
@@ -37,7 +45,7 @@ end
 # dessert = Dessert.new('ada',200)
 # p dessert.healthy?
 # p dessert.delicious?
-
+#
 # jellybean = JellyBean.new("black", 10, "black licaorice")
 # p jellybean.healthy?
 # p jellybean.delicious?
