@@ -21,13 +21,15 @@ end
 #p 12.rupees.in(:dollar)
 #p 12.rupee
 
-module Enumerable
+class String
   def palindrome?
-    if self.any?
-      true if self.to_s.downcase.gsub(/\W/, '') == self.to_s.reverse.downcase.gsub(/\W/, '')
-    else
-      false
-    end
+    true if self.downcase.gsub(/\W/, '') == self.reverse.downcase.gsub(/\W/, '')
+  end
+end
+
+class Array
+  def palindrome?
+    true if self.to_s.palindrome?
   end
 end
 
@@ -36,6 +38,3 @@ end
 
 #p [1,2,3,2,1].palindrome?
 #p [1,2,3,2,2].palindrome?
-
-#hash = Hash.new(['1' => 'blah', '2' => 'bro'])
-#p hash.palindrome?
