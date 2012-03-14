@@ -5,7 +5,7 @@ class Numeric
     if @@currencies.has_key?(singular_currency)
       self * (@@currencies[singular_currency] / @@currencies['dollar'])
     elsif method_id.to_s == 'in'
-      singular_currency = *args[0].to_s.gsub( /s$/, '')
+      singular_currency = args[0].to_s.gsub( /s$/, '')
       if @@currencies.has_key?(singular_currency)
         self * (@@currencies['dollar'] / @@currencies[singular_currency])
       end
@@ -19,7 +19,7 @@ end
 #p 12.yen
 #p 12.euro.in(:dollar)
 #p 12.rupees.in(:dollar)
-#p 12.rupee.in(:dollars)
+#p 12.rupee
 
 class String
   def palindrome?
