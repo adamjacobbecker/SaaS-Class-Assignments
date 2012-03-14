@@ -27,15 +27,9 @@ class String
   end
 end
 
-class Array
+module Enumerable
   def palindrome?
-    true if self.to_s.palindrome?
-  end
-end
-
-class Hash
-  def palindrome?
-    false
+    self.collect{|x| x} == self.collect{|x| x}.reverse
   end
 end
 
@@ -44,5 +38,3 @@ end
 
 #p [1,2,3,2,1].palindrome?
 #p [1,2,3,2,2].palindrome?
-
-#p (1,2).palindrome?
