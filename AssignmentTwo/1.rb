@@ -39,12 +39,6 @@ class Hash
   end
 end
 
-module Enumerable
-  def palindrome?
-    true if self.to_s.downcase.gsub(/\W/, '') == self.to_s.reverse.downcase.gsub(/\W/, '')
-  end
-end
-
 #p "ooo".palindrome?
 #p "foo".palindrome?
 
