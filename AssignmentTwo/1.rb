@@ -33,8 +33,22 @@ class Array
   end
 end
 
+class Hash
+  def palindrome?
+    false
+  end
+end
+
+module Enumerable
+  def palindrome?
+    true if self.to_s.downcase.gsub(/\W/, '') == self.to_s.reverse.downcase.gsub(/\W/, '')
+  end
+end
+
 #p "ooo".palindrome?
 #p "foo".palindrome?
 
 #p [1,2,3,2,1].palindrome?
 #p [1,2,3,2,2].palindrome?
+
+p (1,2).palindrome?
