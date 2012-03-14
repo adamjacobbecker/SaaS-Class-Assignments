@@ -51,4 +51,4 @@ end
 #p [1,2,3,2,1].palindrome?
 #p [1,2,3,2,2].palindrome?
 
-p (1,2).palindrome?
+#p (1,2).palindrome?
